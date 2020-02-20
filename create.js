@@ -37,6 +37,7 @@ const file = readline.createInterface({
 
 
 const saves = voters.map(v => v.save());
-Promise.all(saves)
+mongoose.connection.dropDatabase()
+  .then(() => Promise.all(saves))
   .then(() => console.log('All saved'))
   .catch(error => console.error(error.stack));
