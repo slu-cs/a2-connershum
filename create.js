@@ -8,16 +8,17 @@ const Professor = require('./schema');
 
 connect(); // To the database
 
+const voters = [];
 
-  // File configurations
+// File configurations
 const filename = 'voters.csv';
 const file = readline.createInterface({
   input: fs.createReadStream(filename)
 });
 
-  // Asyncronous line-by-line input
+// Asyncronous line-by-line input
 file.on('line', function(line) {
-  console.log(line);
+  console.log(line[1]);
 });
 
 // End the program when the file closes
