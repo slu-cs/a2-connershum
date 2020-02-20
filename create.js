@@ -31,13 +31,15 @@ const file = readline.createInterface({
 
   // End the program when the file closes
   file.on('close', function() {
+    console.log('voters made');
     process.exit(0);
-
-    const saves = voters.map(v => v.save());
-    mongoose.connection.dropDatabase()
-      .then(() => Promise.all(saves))
-      .then(() => console.log('All saved'))
-      .catch(error => console.error(error.stack));
-      
   });
 });
+
+/*
+const saves = voters.map(v => v.save());
+mongoose.connection.dropDatabase()
+  .then(() => Promise.all(saves))
+  .then(() => console.log('All saved'))
+  .catch(error => console.error(error.stack));
+*/
