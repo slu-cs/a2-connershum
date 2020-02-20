@@ -18,7 +18,8 @@ const file = readline.createInterface({
 
 // Asyncronous line-by-line input
 file.on('line', function(line) {
-  console.log(line[1]);
+  var array = line.split(,);
+  console.log(array[1]);
 });
 
 // End the program when the file closes
