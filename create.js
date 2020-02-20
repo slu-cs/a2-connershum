@@ -9,8 +9,7 @@ connect(); // To the database
 
 
   // File configurations
-const file = fs.createReadStream('voters.csv')
-});
+const file = fs.createReadStream('voters.csv');
 
   // Asyncronous line-by-line input
 file.on('line', function(line) {
