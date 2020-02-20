@@ -15,7 +15,7 @@ const voters = [];
 const filename = 'voters.csv';
 const file = readline.createInterface({
   input: fs.createReadStream(filename)
-
+});
 
   // Asyncronous line-by-line input
   file.on('line', function(line) {
@@ -34,7 +34,7 @@ const file = readline.createInterface({
     console.log('voters made');
     process.exit(0);
   });
-});
+
 
 /*
 const saves = voters.map(v => v.save());
