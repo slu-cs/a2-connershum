@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const connect = require('./db');
 const readline = require('readline');
 const fs = require('fs');
-const Professor = require('./schema');
+const Voter = require('./schema');
 
 connect(); // To the database
 
@@ -19,7 +19,13 @@ const file = readline.createInterface({
 // Asyncronous line-by-line input
 file.on('line', function(line) {
   var array = line.split(',');
-  console.log(array[1]);
+
+  voters.push(new Voter({
+    firstName: array[0],
+    lastName: array[1],
+    id: array[2],
+    votes: array[3]
+  }));
 });
 
 // End the program when the file closes
