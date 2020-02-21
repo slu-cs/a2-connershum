@@ -36,7 +36,7 @@ file.on('close', function() {
 });
 
 
-
+// Not working !!!!!
 const saves = voters.map(v => v.save());
 mongoose.connection.dropDatabase()
   .then(() => Promise.all(saves))
