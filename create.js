@@ -24,7 +24,7 @@ file.on('line', function(line) {
   voters.push((new Voter({
     firstName: array[0],
     lastName: array[1],
-    id: array[2],
+    zipcode: array[2],
     votes: array[3]
   })).save);
 });

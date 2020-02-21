@@ -13,7 +13,7 @@ const Voter = new mongoose.Schema({
 // Speed up queries on all fields
 Voter.index({firstName: 1});
 Voter.index({lastName: 1});
-Voter.index({id: 1});
+Voter.index({zipcode: 1});
 Voter.index({votes: 1});
 
 // Compile and export this Schema
