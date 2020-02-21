@@ -32,9 +32,6 @@ file.on('line', function(line) {
 // End the program when the file closes
 file.on('close', function() {
   console.log('voters made');
-  Promise.all(saves)
-    .then(() => console.log('All saved'))
-    .catch(error => console.error(error.stack));
   process.exit(0);
 });
 
@@ -42,7 +39,6 @@ file.on('close', function() {
 // Not working !!!!!
 
 const saves = voters.map(v => v.save());
-/*Promise.all(saves)
+Promise.all(voters)
   .then(() => console.log('All saved'))
   .catch(error => console.error(error.stack));
-*/
