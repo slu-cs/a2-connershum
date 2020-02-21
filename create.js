@@ -38,6 +38,6 @@ file.on('close', function() {
 
 // Not working !!!!!
 const saves = voters.map(v => v.save());
-Promise.all(saves))
+Promise.all(saves)
   .then(() => console.log('All saved'))
   .catch(error => console.error(error.stack));
