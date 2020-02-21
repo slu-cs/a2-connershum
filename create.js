@@ -21,12 +21,12 @@ const file = readline.createInterface({
 file.on('line', function(line) {
   var array = line.split(',');
 
-  voters.push(new Voter({
+  voters.push((new Voter({
     firstName: array[0],
     lastName: array[1],
     id: array[2],
     votes: array[3]
-  }));
+  })).save);
 });
 
 // End the program when the file closes
@@ -38,7 +38,6 @@ file.on('close', function() {
 
 // Not working !!!!!
 const saves = voters.map(v => v.save());
-mongoose.connection.dropDatabase()
-  .then(() => Promise.all(saves))
+Promise.all(saves))
   .then(() => console.log('All saved'))
   .catch(error => console.error(error.stack));
