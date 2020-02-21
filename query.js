@@ -15,10 +15,13 @@ query.exec(function(error, voters) {
 
 const queries = [
 
+  Voter.find().where('zipcode').equals(13617)
+
 ];
 
 // Run the queries in parallel
 Promise.all(queries)
   .then(function(results) {
+    console.log('Voters in Canton: ', results[0].map(p => p.firstName + ' ' + p.lastName));
 
   }).catch(error => console.error(error.stack));
