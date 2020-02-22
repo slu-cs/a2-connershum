@@ -28,14 +28,14 @@ mongoose.conection.dropDatabase()
       zipcode: array[2],
       votes: array[3]
     })).save);
-  });
+  }));
 
   // End the program when the file closes
   file.on('close', function() {
     console.log('voters made');
     process.exit(0)
       .then(mongoose.connection.close())
-  }));
+  });
 
 
 // Not working !!!!!
