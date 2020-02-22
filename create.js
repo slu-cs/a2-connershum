@@ -17,24 +17,25 @@ const file = readline.createInterface({
   input: fs.createReadStream(filename)
 });
 
+mongoose.conection.dropDatabase()
 // Asyncronous line-by-line input
-file.on('line', function(line) {
-  var array = line.split(',');
+  .then(file.on('line', function(line) {
+    var array = line.split(',');
 
-  voters.push((new Voter({
-    firstName: array[0],
-    lastName: array[1],
-    zipcode: array[2],
-    votes: array[3]
-  })).save);
-});
+    voters.push((new Voter({
+      firstName: array[0],
+      lastName: array[1],
+      zipcode: array[2],
+      votes: array[3]
+    })).save);
+  });
 
-// End the program when the file closes
-file.on('close', function() {
-  console.log('voters made');
-  mongoose.connection.close();
-  process.exit(0);
-});
+  // End the program when the file closes
+  file.on('close', function() {
+    console.log('voters made');
+    process.exit(0)
+      .then(mongoose.connection.close())
+  }));
 
 
 // Not working !!!!!
