@@ -17,7 +17,7 @@ const file = readline.createInterface({
   input: fs.createReadStream(filename)
 });
 
-mongoose.conection.dropDatabase()
+mongoose.connection.dropDatabase()
 // Asyncronous line-by-line input
   .then(file.on('line', function(line) {
     var array = line.split(',');
