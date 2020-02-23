@@ -34,8 +34,7 @@ const file = readline.createInterface({
   file.on('close', function() {
     console.log('voters made')
     mongoose.connection.dropDatabase(function() {
-      const saves = voters.map(v => v.save());
-      Promise.all(saves)
+      voters.map(v => v.save())
         .then(() => mongoose.connection.close())
         .then(() => console.log('All saved'))
         .then(() => process.exit(0))
