@@ -22,12 +22,12 @@ const file = readline.createInterface({
   file.on('line', function(line) {
     var array = line.split(',');
 
-    voters.push((new Voter({
+    voters.push(new Voter({
       firstName: array[0],
       lastName: array[1],
       zipcode: array[2],
       votes: array[3]
-    })).save);
+    }));
   });
 
   // End the program when the file closes
