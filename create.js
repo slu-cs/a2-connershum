@@ -35,7 +35,8 @@ mongoose.connection.dropDatabase();
   // End the program when the file closes
   file.on('close', function() {
     console.log('voters made')
-    voters.map(v => v.save())
+    const saves = voters.map(v => v.save())
+    Promise.all(saves)
       .then(() => console.log('Hi'))
       //.then(voters => voters.map(v => v.save()))
       .then(() => mongoose.connection.close())
