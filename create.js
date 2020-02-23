@@ -34,13 +34,13 @@ const file = readline.createInterface({
   file.on('close', function() {
     console.log('voters made')
     process.exit(0)
-    mongoose.connection.dropDatabase()
-    const saves = voters.map(v => v.save());
-    Promise.all(saves)
-      .then(() => mongoose.connection.close())
-      .then(() => console.log('All saved'))
-      .catch(error => console.error(error.stack));
-
+    mongoose.connection.dropDatabase(function() {
+      const saves = voters.map(v => v.save());
+      Promise.all(saves)
+        .then(() => mongoose.connection.close())
+        .then(() => console.log('All saved'))
+        .catch(error => console.error(error.stack));
+    });
   });
 
 
