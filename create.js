@@ -35,7 +35,7 @@ const file = readline.createInterface({
     console.log('voters made');
     process.exit(0)
       .then(mongoose.connection.dropDatabase())
-      .then(voters.map(v => v.save()))
+      .then(() => voters.map(v => v.save()))
       .then(() => console.log('All saved'))
       .then(mongoose.connection.close())
       .catch(error => console.error(error.stack))
