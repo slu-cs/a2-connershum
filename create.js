@@ -28,8 +28,7 @@ const file = readline.createInterface({
       zipcode: array[2],
       votes: array[3]
     });
-    console.log(avoter);
-    avoter.save();
+    voters.push(avoter.save());
 
   });
 
