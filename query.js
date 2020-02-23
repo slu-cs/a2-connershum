@@ -6,13 +6,13 @@ const Voter = require('./schema');
 
 connect(); // To the database
 
-/*// What documents are in the collection?
+// What documents are in the collection?
 const query = Voter.find();
 query.exec(function(error, voters) {
   if (error) console.error(error.stack);
   console.log(voters);
-});*/
-
+});
+/*
 const queries = [
 
   Voter.find().where('zipcode').equals(13617)
@@ -25,3 +25,4 @@ Promise.all(queries)
     console.log('Voters in Canton: ', results[0].map(p => p.firstName));
 
   }).catch(error => console.error(error.stack));
+*/
