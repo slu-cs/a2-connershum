@@ -17,9 +17,9 @@ const file = readline.createInterface({
   input: fs.createReadStream(filename)
 });
 
-mongoose.connection.dropDatabase()
+
 // Asyncronous line-by-line input
-  .then(file.on('line', function(line) {
+  file.on('line', function(line) {
     var array = line.split(',');
 
     voters.push((new Voter({
@@ -28,13 +28,18 @@ mongoose.connection.dropDatabase()
       zipcode: array[2],
       votes: array[3]
     })).save);
-  }));
+  });
 
   // End the program when the file closes
   file.on('close', function() {
     console.log('voters made');
     process.exit(0)
+      .then(mongoose.connection.dropDatabase())
+      .then(voters.map(v => v.save()))
+      .then(() => console.log('All saved'))
       .then(mongoose.connection.close())
+      .catch(error => console.error(error.stack))
+
   });
 
 
