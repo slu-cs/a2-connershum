@@ -30,16 +30,19 @@ const file = readline.createInterface({
     }));
   });
 
-mongoose.connection.dropDatabase()
+mongoose.connection.dropDatabase();
 
   // End the program when the file closes
-  file.on('close')
-    .then(() => console.log('voters made'))
-    .then(voters => voters.map(v => v.save()))
-    .then(() => mongoose.connection.close())
-    .then(() => console.log('All saved'))
-    .then(() => process.exit(0))
-    .catch(error => console.error(error.stack));
+  file.on('close', function() {
+    console.log('voters made')
+    voters.map(v => v.save())
+      .then(() => console.log('Hi'))
+      //.then(voters => voters.map(v => v.save()))
+      .then(() => mongoose.connection.close())
+      .then(() => console.log('All saved'))
+      .then(() => process.exit(0))
+      .catch(error => console.error(error.stack));
+  });
 
 
 // Not working !!!!!
