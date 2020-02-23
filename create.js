@@ -22,25 +22,22 @@ const file = readline.createInterface({
   file.on('line', function(line) {
     var array = line.split(',');
 
-    voters.push(new Voter({
+    (new Voter({
       firstName: array[0],
       lastName: array[1],
       zipcode: array[2],
       votes: array[3]
-    }));
+    })).save();
   });
 
 mongoose.connection.dropDatabase();
 
   // End the program when the file closes
   file.on('close', function() {
-    console.log('voters made')
-    voters.map(v => v.save()) {
-      if (error) console.error(error.stack);
-      console.log('Hi');
-      mongoose.connection.close();
-      process.exit(0);
-    };
+    console.log('voters made');
+    mongoose.connection.close();
+    process.exit(0);
+
       //.then(() => console.log('Hi'))
       //.then(voters => voters.map(v => v.save()))
       //.then(() => mongoose.connection.close())
