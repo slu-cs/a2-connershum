@@ -35,12 +35,12 @@ mongoose.connection.dropDatabase();
   // End the program when the file closes
   file.on('close', function() {
     console.log('voters made')
-    voters.map(v => v.save() {
+    voters.map(v => v.save()) {
       if (error) console.error(error.stack);
       console.log('Hi');
       mongoose.connection.close();
       process.exit(0);
-    });
+    };
       //.then(() => console.log('Hi'))
       //.then(voters => voters.map(v => v.save()))
       //.then(() => mongoose.connection.close())
