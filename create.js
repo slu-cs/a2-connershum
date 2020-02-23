@@ -36,7 +36,7 @@ mongoose.connection.dropDatabase();
   file.on('close', function() {
     console.log('voters made');
     mongoose.connection.close();
-    process.exit(0);
+    //process.exit(0);
 
       //.then(() => console.log('Hi'))
       //.then(voters => voters.map(v => v.save()))
