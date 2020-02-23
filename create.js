@@ -32,12 +32,12 @@ const file = readline.createInterface({
 
   // End the program when the file closes
   file.on('close', function() {
-    console.log('voters made');
-    process.exit(0)
+    console.log('voters made')
       .then(mongoose.connection.dropDatabase())
       .then(voters => voters.map(v => v.save()))
       .then(() => console.log('All saved'))
       .then(mongoose.connection.close())
+      .then(process.exit(0))
       .catch(error => console.error(error.stack))
 
   });
