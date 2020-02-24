@@ -6,8 +6,8 @@ const mongoose = require('mongoose');
 const Voter = new mongoose.Schema({
   firstName: String,
   lastName: String,
-  id: Number,
-  votes: [String]
+  zipcode: Number,
+  votes: String
 });
 
 // Speed up queries on all fields
