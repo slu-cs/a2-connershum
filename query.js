@@ -19,7 +19,7 @@ const queries = [
 
   Voter.find().where('firstName').equals('STARR'),
 
-  Voter.countDocuments().where('votes').in('GE16'),
+  Voter.countDocuments().where('votes').includes('GE16'),
 
   Voter.find().sort('-lastName').limit(1),
 
