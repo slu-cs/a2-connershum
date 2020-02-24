@@ -6,13 +6,8 @@ const Voter = require('./schema');
 
 connect(); // To the database
 
-/*// What documents are in the collection?
-const query = Voter.find();
-query.exec(function(error, voters) {
-  if (error) console.error(error.stack);
-  console.log(voters);
-});*/
 
+// Reference: Mongoose notation page: https://mongoosejs.com/docs/guide.html
 const queries = [
 
   // How many registered voters live in the Canton zip code (13617)?
