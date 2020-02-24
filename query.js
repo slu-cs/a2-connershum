@@ -36,7 +36,7 @@ Promise.all(queries)
 
     console.log('Test: ', results[3]);
 
-    console.log('Voters: ', results[3]);
+    console.log('Voters: ', results[4]);
 
 
   }).catch(error => console.error(error.stack));
