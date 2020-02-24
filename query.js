@@ -17,9 +17,9 @@ const queries = [
 
   Voter.countDocuments().where('zipcode').equals(13617),
 
-  Voter.find().where('firstName').equals('Starr'),
+  Voter.find().where('firstName').equals('STARR'),
 
-  Voter.find().where('votes').in('GE16'),
+  Voter.countDocuments().where('votes').in('GE16'),
 
   Voter.countDocuments()
 
