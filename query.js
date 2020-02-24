@@ -22,6 +22,6 @@ const queries = [
 // Run the queries in parallel
 Promise.all(queries)
   .then(function(results) {
-    console.log('Voters in Canton: ', results[0].map(p => p.firstName));
+    console.log('Voters in Canton: ', results[0]);
 
   }).catch(error => console.error(error.stack));
