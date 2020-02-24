@@ -17,6 +17,10 @@ const queries = [
 
   Voter.countDocuments().where('zipcode').equals(13617),
 
+  Voter.find().where('firstName').equals('Starr'),
+
+  Voter.find().where('votes').in('GE16'),
+
   Voter.countDocuments()
 
 ];
@@ -25,8 +29,10 @@ const queries = [
 Promise.all(queries)
   .then(function(results) {
     console.log('Voters in Canton: ', results[0]);
+    console.log('Voters with First Name "Starr": ', results[1]);
+    console.log('Voters that Voted in the 2016 General Election: ', results[2]);
 
-    console.log('Voters: ', results[1]);
+    console.log('Voters: ', results[3]);
 
 
   }).catch(error => console.error(error.stack));
