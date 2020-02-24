@@ -15,7 +15,7 @@ query.exec(function(error, voters) {
 
 const queries = [
 
-  Voter.count().where('zipcode').equals(13617),
+  Voter.countDocuments().where('zipcode').equals(13617),
 
   Voter.countDocuments()
 
