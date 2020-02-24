@@ -15,6 +15,8 @@ query.exec(function(error, voters) {
 
 const queries = [
 
+  Voter.countDocuments().where('zipcode').equals(13617),
+
   Voter.countDocuments()
 
 ];
@@ -23,5 +25,8 @@ const queries = [
 Promise.all(queries)
   .then(function(results) {
     console.log('Voters in Canton: ', results[0]);
+
+    console.log('Voters: ', results[1]);
+
 
   }).catch(error => console.error(error.stack));
