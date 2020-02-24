@@ -15,7 +15,7 @@ query.exec(function(error, voters) {
 
 const queries = [
 
-  Voter.count()
+  Voter.countDocuments()
 
 ];
 
