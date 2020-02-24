@@ -23,7 +23,7 @@ const queries = [
 
   Voter.find().sort('-lastName').limit(1),
 
-  Voter.countDocuments().distinct('zipcode'),
+  Voter.distinct('zipcode').countDocuments(),
 
   Voter.countDocuments().where('votes').equals('GE16'),
   Voter.countDocuments()
