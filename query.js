@@ -21,6 +21,8 @@ const queries = [
 
   Voter.countDocuments().where('votes').in('GE16'),
 
+  Voter.countDocuments().where('votes').equals('GE16'),
+
   Voter.countDocuments()
 
 ];
@@ -29,8 +31,10 @@ const queries = [
 Promise.all(queries)
   .then(function(results) {
     console.log('Voters in Canton: ', results[0]);
-    console.log('Voters with First Name "Starr": ', results[1].map(p => (p.firstName + p.lastName)));
+    console.log('Voters with First Name "Starr": ', results[1].map(p => (p.firstName + ' ' + p.lastName)));
     console.log('Voters that Voted in the 2016 General Election: ', results[2]);
+
+    console.log('Test: ', results[3]);
 
     console.log('Voters: ', results[3]);
 
