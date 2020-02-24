@@ -21,8 +21,9 @@ const queries = [
 
   Voter.countDocuments().where('votes').includes('GE16'),
 
-  Voter.countDocuments().where('votes').equals('GE16'),
+  Voter.find().sort('-lastName').limit(1),
 
+  Voter.countDocuments().where('votes').equals('GE16'),
   Voter.countDocuments()
 
 ];
@@ -33,10 +34,11 @@ Promise.all(queries)
     console.log('Voters in Canton: ', results[0]);
     console.log('Voters with First Name "Starr": ', results[1].map(p => (p.firstName + ' ' + p.lastName)));
     console.log('Voters that Voted in the 2016 General Election: ', results[2]);
+    console.log('Alphabetically Last Last Name in the County: ', results[3].map(p => (p.lastName)));
 
-    console.log('Test: ', results[3]);
+    console.log('Test: ', results[4]);
 
-    console.log('Voters: ', results[4]);
+    console.log('Voters: ', results[5]);
 
 
   }).catch(error => console.error(error.stack));
