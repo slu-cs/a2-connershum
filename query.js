@@ -23,7 +23,7 @@ const queries = [
 
   Voter.find().sort('-lastName').limit(1),
 
-  Voter.distinct('zipcode').countDocuments(),
+  Voter.distinct('zipcode'),
 
   Voter.countDocuments().where('votes').equals('GE16'),
   Voter.countDocuments()
@@ -37,7 +37,7 @@ Promise.all(queries)
     console.log('Voters with First Name "Starr": ', results[1].map(p => (p.firstName + ' ' + p.lastName)));
     console.log('Voters that Voted in the 2016 General Election: ', results[2]);
     console.log('Alphabetically Last Last Name in the County: ', results[3].map(p => (p.lastName)));
-    console.log('Number of Zipcodes: ', results[4]);
+    console.log('Number of Zipcodes: ', results[4].count());
 
     console.log('Test: ', results[5]);
 
