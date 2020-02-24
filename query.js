@@ -28,10 +28,7 @@ const queries = [
   Voter.find().sort('-lastName').limit(1),
 
   // How many zip codes does the county contain?
-  Voter.distinct('zipcode'),
-
-  Voter.countDocuments().where('votes').equals('GE16'),
-  Voter.countDocuments()
+  Voter.distinct('zipcode')
 
 ];
 
@@ -43,10 +40,4 @@ Promise.all(queries)
     console.log('Voters that Voted in the 2016 General Election: ', results[2]);
     console.log('Alphabetically Last Last-Name in the County: ', results[3].map(p => (p.lastName)));
     console.log('Number of Zipcodes: ', results[4].length);
-
-    console.log('Test: ', results[5]);
-
-    console.log('Voters: ', results[6]);
-
-
   }).catch(error => console.error(error.stack));
