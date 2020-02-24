@@ -8,7 +8,7 @@ const Voter = require('./schema');
 
 connect(); // To the database
 
-// Create the voters
+// Create the voters list
 const voters = [];
 
 // File configurations
@@ -18,7 +18,7 @@ const file = readline.createInterface({
 });
 
 
-// Asyncronous line-by-line input
+// Asyncronous line-by-line input, creating voters and saving them
   file.on('line', function(line) {
     var array = line.split(',');
 
@@ -39,20 +39,4 @@ mongoose.connection.dropDatabase();
     console.log('voters made');
     mongoose.connection.close();
     process.exit(0);
-
-      //.then(() => console.log('Hi'))
-      //.then(voters => voters.map(v => v.save()))
-      //.then(() => mongoose.connection.close())
-      //.then(() => console.log('All saved'))
-      //.then(() => process.exit(0))
-      //.catch(error => console.error(error.stack));
   });
-
-
-// Not working !!!!!
-
-/*const saves = voters.map(v => v.save());
-Promise.all(saves)
-  .then(() => console.log('All saved'))
-  .catch(error => console.error(error.stack));
-*/
