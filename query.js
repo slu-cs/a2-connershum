@@ -22,7 +22,7 @@ const queries = [
   Voter.find().where('firstName').equals('STARR'),
 
   // How many people voted in the 2016 general election (GE16)?
-  Voter.countDocuments().where('votes').in('GE16'),
+  Voter.find({'votes':{$regex" '.*GE16.*'}}),
 
   // What is the last-name that comes last in the county in alphabetical order?
   Voter.find().sort('-lastName').limit(1),
@@ -37,7 +37,7 @@ Promise.all(queries)
   .then(function(results) {
     console.log('Voters in Canton: ', results[0]);
     console.log('Voters with First Name "Starr": ', results[1].map(p => (p.firstName + ' ' + p.lastName)));
-    console.log('Voters that Voted in the 2016 General Election: ', results[2]);
+    console.log('Voters that Voted in the 2016 General Election: ', results[2].length);
     console.log('Alphabetically Last Last-Name in the County: ', results[3].map(p => (p.lastName)));
     console.log('Number of Zipcodes: ', results[4].length);
   }).catch(error => console.error(error.stack));
