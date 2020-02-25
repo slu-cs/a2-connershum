@@ -17,26 +17,24 @@ const file = readline.createInterface({
   input: fs.createReadStream(filename)
 });
 
-
 // Asyncronous line-by-line input, creating voters and saving them
-  file.on('line', function(line) {
-    var array = line.split(',');
+file.on('line', function(line) {
+  var array = line.split(',');
 
-    var avoter = new Voter({
-      firstName: array[0],
-      lastName: array[1],
-      zipcode: array[2],
-      votes: array[3]
-    });
-    voters.push(avoter.save());
-
+  var avoter = new Voter({
+    firstName: array[0],
+    lastName: array[1],
+    zipcode: array[2],
+    votes: array[3]
   });
+  voters.push(avoter);
 
-mongoose.connection.dropDatabase();
+});
 
-  // End the program when the file closes
-  file.on('close', function() {
-    console.log('voters made');
-    mongoose.connection.close();
-    process.exit(0);
-  });
+// End the program when the file closes (and when the saves are done)
+file.on('close', function() {
+  mongoose.connection.dropDatabase()
+    .then(() => Promise.all(voters.map(v => v.save())))
+    .then(() => mongoose.connection.close())
+    .then(() => console.log('voters made'));
+});
